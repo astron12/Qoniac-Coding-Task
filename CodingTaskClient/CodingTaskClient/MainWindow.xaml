@@ -1,0 +1,34 @@
+﻿<Window x:Class="CodingTaskClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodingTaskClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="auto" Width="auto">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="125"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" FontSize="15" Content="Currency Amount:"/>
+
+        <TextBox x:Name="Input_Tb" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" Margin="0 0 5 0" FontSize="20" Text="" HorizontalContentAlignment="Right"/>
+        <Button x:Name="Send_Btn" Grid.Column="3" Grid.Row="1" Content="Convert" Click="Send_Btn_Click" />
+
+        <TextBlock x:Name="Output_Lb" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" TextWrapping="Wrap" FontSize="20" Text="output"/>
+
+        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3" FontSize="15" Content="Debugging" HorizontalContentAlignment="Center"/>
+        <Button x:Name="RandomInput_Btn" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="4" Content="Generate and Convert Random Number" Click="RandomInput_Btn_Click" />
+    </Grid>
+</Window>

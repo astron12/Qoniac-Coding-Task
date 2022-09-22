@@ -1,0 +1,2 @@
+obj\Debug\net6.0-windows\Protos/Convert.cs \
+obj\Debug\net6.0-windows\Protos/ConvertGrpc.cs: Protos/convert.proto

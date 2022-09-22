@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "CodingTaskServer";
+
+package convert;
+
+service CurrencyConverter {
+	rpc ConvertToWords (WordRequest) returns (WordReply);
+}
+message WordRequest {
+	string numericAmount = 1;
+}
+message WordReply {
+	string amountInWords = 1;
+	string validatedNumericAmount = 2;
+}
