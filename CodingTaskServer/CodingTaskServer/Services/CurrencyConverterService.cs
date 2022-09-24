@@ -124,6 +124,9 @@ namespace CodingTaskServer.Services
 			"twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
 		};
 
+		/// <summary>
+		/// Convert a number between 1 and 99 to a word/word combo (a-b).
+		/// </summary>
 		private static string GetWord(int numericValue)
 		{
 			if (numericValue < 20)
@@ -132,16 +135,16 @@ namespace CodingTaskServer.Services
 			}
 			else
 			{
-				int baseValue = numericValue % 10; //take the mod when dividing by ten to get the base number
-				int prefixValue = Convert.ToInt32(Math.Floor(0.1f * numericValue) + 17); //determine the multiple of 10 to determine the prefix
+				int baseIndex = numericValue % 10; //take the mod when dividing by ten to get the base number
+				int prefixIndex = Convert.ToInt32(Math.Floor(0.1f * numericValue) + 17); //determine the multiple of 10 to determine the prefix
 																						 //17 is added as 20 yields an index of 2 which in the number table equates to index 19
-				if (baseValue > 0)
+				if (baseIndex > 0)
 				{
-					return string.Concat(baseNumbers[prefixValue], "-", baseNumbers[baseValue - 1]);
+					return string.Concat(baseNumbers[prefixIndex], "-", baseNumbers[baseIndex - 1]);
 				}
 				else
 				{
-					return baseNumbers[prefixValue];
+					return baseNumbers[prefixIndex];
 				}
 			}
 		}
