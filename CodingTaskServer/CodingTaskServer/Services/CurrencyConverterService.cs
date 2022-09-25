@@ -19,7 +19,7 @@ namespace CodingTaskServer.Services
 				if (numberParts != null && numberParts.Length > 0)
 				{
 					WordReply reply = new() { AmountInWords = "", ValidatedNumericAmount = "" };
-					//cents
+					/* cents */
 					if (numberParts.Length > 1)
 					{
 						string centString = numbersOnlyRegex.Replace(numberParts[1], "");
@@ -48,7 +48,7 @@ namespace CodingTaskServer.Services
 							}
 						}
 					}
-					//dollars
+					/* dollars */
 					string dollarString = numbersOnlyRegex.Replace(numberParts[0], "");
 					//ignore any characters beyond 9 (due to limit of 999 999 999)
 					//this could also be handle bei converting the larger number to int ans then clamping it
@@ -125,10 +125,11 @@ namespace CodingTaskServer.Services
 		};
 
 		/// <summary>
-		/// Convert a number between 1 and 99 to a word/word combo (a-b).
+		/// Convert a number between 1 and 99 to a word/word combo (a-b). 
 		/// </summary>
 		private static string GetWord(int numericValue)
 		{
+			numericValue = Math.Clamp(numericValue, 0, 99);
 			if (numericValue < 20)
 			{
 				return baseNumbers[numericValue - 1];

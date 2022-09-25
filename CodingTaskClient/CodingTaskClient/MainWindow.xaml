@@ -23,7 +23,7 @@
 
         <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" FontSize="15" Content="Currency Amount:"/>
 
-        <TextBox x:Name="Input_Tb" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" Margin="0 0 5 0" FontSize="20" Text="" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="Input_Tb" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Stretch" Margin="0 0 5 0" FontSize="20" Text="" HorizontalContentAlignment="Right" KeyUp="Input_Tb_KeyUp"/>
         <Button x:Name="Send_Btn" Grid.Column="3" Grid.Row="1" Content="Convert" Click="Send_Btn_Click" />
 
         <TextBlock x:Name="Output_Lb" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" TextWrapping="Wrap" FontSize="20" Text="output"/>

@@ -23,6 +23,14 @@ namespace CodingTaskClient
 	{
 		/* Setup + UI callbacks */ 
 		public MainWindow() => InitializeComponent();
+		private void Input_Tb_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter) //QoL auto convert when user presses enter when inputting input.
+			{
+				Keyboard.ClearFocus();
+				RequestConversion(Input_Tb.Text);
+			}
+		}
 		private void Send_Btn_Click(object sender, RoutedEventArgs e) => RequestConversion(Input_Tb.Text);
 		private void RandomInput_Btn_Click(object sender, RoutedEventArgs e)
 		{
@@ -45,10 +53,12 @@ namespace CodingTaskClient
 		private async void RequestConversion(string targetInput)
 		{
 			Output_Lb.Text = "Waiting for reply...";
+			//correspnding to the server addresses as specified in the server launchSettings.json (applicationUrl, second value)
 			using GrpcChannel channel = GrpcChannel.ForAddress("https://localhost:7187");
 			CurrencyConverter.CurrencyConverterClient client = new(channel);
 			try
 			{
+				//send input to server and timeout connection after 4 seconds of the server not responding when run locally for debugging this should be enough time for the server to respond.
 				var reply = await client.ConvertToWordsAsync(new WordRequest { NumericAmount = targetInput }, deadline: DateTime.UtcNow.AddSeconds(4));
 				if (reply.ValidatedNumericAmount == "")
 				{
@@ -56,7 +66,9 @@ namespace CodingTaskClient
 				}
 				else
 				{
+					//show to converted amount and the formatted (to make it more readable) validated numeric return 
 					Output_Lb.Text = string.Concat(reply.AmountInWords, ". (", GetDisplayFormat(reply.ValidatedNumericAmount), ")");
+					//override the user input with the validate numeric amount
 					Input_Tb.Text = reply.ValidatedNumericAmount;
 				}
 			}
