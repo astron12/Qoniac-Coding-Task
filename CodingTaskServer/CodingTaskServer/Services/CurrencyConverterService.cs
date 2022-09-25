@@ -129,7 +129,7 @@ namespace CodingTaskServer.Services
 		/// </summary>
 		private static string GetWord(int numericValue)
 		{
-			numericValue = Math.Clamp(numericValue, 0, 99);
+			numericValue = Math.Clamp(numericValue, 1, 99);
 			if (numericValue < 20)
 			{
 				return baseNumbers[numericValue - 1];
